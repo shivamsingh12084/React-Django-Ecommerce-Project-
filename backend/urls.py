@@ -13,11 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from turtle import st
-from xml.etree.ElementInclude import include
 
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 
 from django.contrib import admin
 from django.urls import path, include
@@ -27,7 +26,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     
-    #path('api/', include('base.urls')),
+    path('', TemplateView.as_view(template_name = 'index.html')),
     path('api/products/', include('base.urls.product_urls')),
     path('api/users/', include('base.urls.user_urls')),
     path('api/orders/', include('base.urls.order_urls')),
